@@ -54,7 +54,7 @@ device_map = {
     'lm_head': 1
 }
 
-data_dir = './data'
+data_dir = './results/coqa'
 hf_datasets_cache = './hf_dataset_cache'
 hf_cache_dir = './hf_cache'
 output_dir = './output'

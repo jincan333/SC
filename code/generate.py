@@ -30,18 +30,7 @@ args = parser.parse_args()
 wandb.init(project='nlg_uncertainty', id=args.run_id, config=args, resume='allow')
 run_name = wandb.run.name
 device = 'cuda'
-# Set a seed value
-seed_value = 10
-# 1. Set `PYTHONHASHSEED` environment variable at a fixed value
-import os
-os.environ['PYTHONHASHSEED'] = str(seed_value)
-# 2. Set `python` built-in pseudo-random generator at a fixed value
-import random
-random.seed(seed_value)
-# 3. Set `numpy` pseudo-random generator at a fixed value
-np.random.seed(seed_value)
-#Fix torch random seed
-torch.manual_seed(seed_value)
+
 os.environ["HF_DATASETS_CACHE"] = config.hf_datasets_cache
 
 model = AutoModelForCausalLM.from_pretrained(f"facebook/{args.model}", torch_dtype=torch.float16, cache_dir=config.hf_cache_dir).cuda()

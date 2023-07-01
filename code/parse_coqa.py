@@ -8,12 +8,12 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 import config
 
-with open(f'{config.data_dir}/coqa-dev-v1.0.json', 'r') as infile:
+with open('dataset/coqa-dev-v1.0.json', 'r') as infile:
     data = json.load(infile)['data']
 
 rouge = evaluate.load('rouge')
 tokenizer = AutoTokenizer.from_pretrained("microsoft/deberta-large-mnli")
-model = AutoModelForSequenceClassification.from_pretrained("microsoft/deberta-large-mnli").to('cuda:0')
+model = AutoModelForSequenceClassification.from_pretrained("microsoft/deberta-large-mnli").to('cuda:7')
 
 dataset = {}
 dataset['story'] = []
